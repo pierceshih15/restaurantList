@@ -1,5 +1,44 @@
-<h1 class="mb-2 restaurant-show-title">{{restaurant.name}}</h1>
+<h1 class="restaurant-show-title">{{restaurant.name}}</h1>
+
 <div class="container">
+  <div class="row">
+    <div class="mx-auto px-5">
+      <a class="btn btn-info px-3 " href="/restaurants/{{restaurant._id}}/edit">Edit</a>
+      <form class="btn">
+        <!-- Button trigger modal -->
+        <button type="button" class="btn btn-danger px-3" data-toggle="modal"
+          data-target="#trigger-deleteItem-{{restaurant._id}}">Delete</button>
+      </form>
+    </div>
+  </div>
+</div>
+
+<!-- Modal 優化使用者體驗，刪除餐廳-->
+<div class="modal fade" id="trigger-deleteItem-{{restaurant._id}}" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title text-primary">刪除警示</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p class="font-weight-light">請問您確定要刪除資料嗎?</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">關閉</button>
+        <form action="/restaurants/{{restaurant._id}}/delete" method="POST">
+          <button type="submit" class="btn btn-danger">刪除</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- DataDisplay -->
+<div class="container mt-5">
   <div class="row">
     <div class="col-12 col-md-10 mx-auto">
 

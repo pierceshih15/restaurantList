@@ -48,9 +48,34 @@
                     href="/restaurants/{{this._id}}/edit">Edit</a>
                   <!-- restaurants 資料庫的編號屬性為 _id -->
                   <a class="btn btn-sm btn-info col-lg-3 col-10 my-1 mx-1" href="/restaurants/{{this._id}}">Detail</a>
-                  <form action="/restaurants/{{this._id}}/delete" method="POST" class="col-lg-5 col-10 my-1 p-0">
-                    <button type="submit" class="btn btn-sm btn-danger col-12" href="/">Delete</button>
+                  <form class="col-lg-5 col-10 my-1 p-0">
+                    <!-- Button trigger modal -->
+                    <button type="button" class="btn btn-sm btn-danger col-12" data-toggle="modal" data-target="
+                      #trigger-deleteItem-{{this._id}}">Delete</button>
                   </form>
+
+                  <!-- Modal 優化使用者體驗，刪除餐廳-->
+                  <div class="modal fade" id="trigger-deleteItem-{{this._id}}" tabindex="-1" role="dialog">
+                    <div class="modal-dialog" role="document">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <h5 class="modal-title text-primary">刪除警示</h5>
+                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                          </button>
+                        </div>
+                        <div class="modal-body">
+                          <p class="font-weight-light">請問您確定要刪除資料嗎?</p>
+                        </div>
+                        <div class="modal-footer">
+                          <button type="button" class="btn btn-secondary" data-dismiss="modal">關閉</button>
+                          <form action="/restaurants/{{this._id}}/delete" method="POST">
+                            <button type="submit" class="btn btn-danger">刪除</button>
+                          </form>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>

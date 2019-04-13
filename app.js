@@ -33,16 +33,6 @@ app.use(bodyParser.urlencoded({
   extended: true
 }));
 
-// Setting homePage route
-app.get('/', (req, res) => {
-  Restaurant.find((err, restaurants) => {
-    if (err) return console.error(err);
-    return res.render('index', {
-      restaurants: restaurants
-    })
-  })
-});
-
 // 搜尋功能 Action
 app.get('/search', (req, res) => {
   Restaurant.find((err, restaurants) => {
@@ -63,8 +53,13 @@ app.get('/search', (req, res) => {
 
 // 建立頁面路由 
 // 1. 列出全部 restaurant 頁面
-app.get('/restaurants', (req, res) => {
-  res.send('列出所有餐廳');
+app.get('/', (req, res) => {
+  Restaurant.find((err, restaurants) => {
+    if (err) return console.error(err);
+    return res.render('index', {
+      restaurants: restaurants
+    })
+  })
 });
 
 // 2. 新增一筆 restaurant 頁面
