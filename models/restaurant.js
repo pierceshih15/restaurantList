@@ -15,18 +15,15 @@ const restaurantSchema = new Schema({
   },
   category: {
     type: String,
-    required: true,
   },
   image: {
     type: String,
   },
   location: {
     type: String,
-    required: true,
   },
   phone: {
-    type: Number,
-    required: true,
+    type: String,
   },
   google_map: {
     type: String,
@@ -36,7 +33,6 @@ const restaurantSchema = new Schema({
   },
   description: {
     type: String,
-    required: true,
   },
 });
 
