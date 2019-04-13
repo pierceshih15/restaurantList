@@ -140,7 +140,16 @@ app.post('/restaurants/:id', (req, res) => {
 
 // 7. 刪除一筆 restaurant 動作
 app.post('/restaurants/:id/delete', (req, res) => {
-  res.send('刪除一間餐廳');
+  // Step 1：從資料庫取出資料
+  Restaurant.findById(req.params.id, (err, restaurant) => {
+    if (err) return console.error(err);
+
+    // Step 2：將資料庫資料移除，並轉向首頁
+    restaurant.remove(err => {
+      if (err) return console.error(err);
+      return res.redirect('/');
+    });
+  });
 });
 
 app.listen(port, () => {
