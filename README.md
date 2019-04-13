@@ -60,14 +60,13 @@ Restaurant date get done!
 nodemon app.js
 ```
 
-7. 開始使用
-當 terminal 出現以下字樣
+7. 當 terminal 出現以下字樣，表示伺服器與資料庫已啟動並成功連結
 ```
 The Express server is running on http://localhost:3000
 
 Mongodb is connected!
 ```
-即表示伺服器與資料庫已啟動並成功連結，你可開啟任一瀏覽器瀏覽器輸入 [http://localhost:3000](http://localhost:3000) 就可以開始尋找美食餐廳囉！
+現在，你可開啟任一瀏覽器瀏覽器輸入 [http://localhost:3000](http://localhost:3000) 開始尋找美食餐廳囉！
 
 ## Contributor - 專案開發人員
 
