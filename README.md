@@ -24,7 +24,7 @@
 
 1. 打開你的 terminal，Clone 此專案至本機電腦
 ```
-git clone https://github.com/pierceshih15/restaurantList
+git clone https://github.com/pierceshih15/restaurantList.git
 ```
 2. 開啟終端機(Terminal)，進入存放此專案的資料夾
 ```
@@ -44,12 +44,14 @@ cd restaurantList
 
 ```
 在 Terminal 找到 restaurantSeeder.js 檔案
+
 執行 node .\models\seeds\restaurantSeeder.js 匯入餐廳資料
 ```
 
 當 terminal 出現以下字樣，即表示種子資料已新增至資料庫，按下 ctrl + c 結束執行
 ```
 Mongodb is connected!
+
 Restaurant date get done!
 ```
 
@@ -62,6 +64,7 @@ nodemon app.js
 當 terminal 出現以下字樣
 ```
 The Express server is running on http://localhost:3000
+
 Mongodb is connected!
 ```
 即表示伺服器與資料庫已啟動並成功連結，你可開啟任一瀏覽器瀏覽器輸入 [http://localhost:3000](http://localhost:3000) 就可以開始尋找美食餐廳囉！
