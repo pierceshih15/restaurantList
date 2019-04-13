@@ -1,13 +1,12 @@
 <div class="container mx-auto p-5 my-5 bg-secondary text-light">
-  <h2 class="text-center font-italic">快填寫表單，新增你最愛的餐廳吧！</h2>
   <div class="p-3">
-    <form action="/restaurants" method="POST" class="font-weight-light">
+    <form action="/restaurants/{{{restaurant._id}}}" method="POST" class="font-weight-light">
       <!-- 餐廳中文名稱  -->
       <div class="form-group row">
         <label for="name" class="col-sm-2 col-form-label">餐廳名稱 <small><i
               class="fas fa-star-of-life text-danger"></i></small></label>
         <div class="col-sm-10">
-          <input type="name" name="name" class="form-control" id="name" placeholder="中文名稱" required>
+          <input type="name" name="name" class="form-control" id="name" required value="{{{restaurant.name}}}">
         </div>
       </div>
 
@@ -15,7 +14,7 @@
       <div class="form-group row">
         <label for="name_en" class="col-sm-2 col-form-label">餐廳英文名稱</label>
         <div class="col-sm-10">
-          <input type="name" name="name_en" class="form-control" id="name_en" placeholder="英文名稱">
+          <input type="name" name="name_en" class="form-control" id="name_en" value="{{{restaurant.name_en}}}">
         </div>
       </div>
 
@@ -23,7 +22,7 @@
       <div class="form-group row">
         <label for="id" class="col-sm-2 col-form-label">餐廳編號</label>
         <div class="col-sm-6">
-          <input type="number" name="id" class="form-control" id="id" min="1" step="1" placeholder="餐廳編號">
+          <input type="number" name="id" class="form-control" id="id" min="1" step="1" value="{{{restaurant.id}}}">
         </div>
       </div>
 
@@ -31,7 +30,7 @@
       <div class="form-group row">
         <label for="category" class="col-sm-2 col-form-label">餐廳類別</label>
         <div class="col-sm-10">
-          <input type="text" name="category" class="form-control" id="category" placeholder="日本料理、港式料理">
+          <input type="text" name="category" class="form-control" id="category" value="{{{restaurant.category}}}">
         </div>
       </div>
 
@@ -39,8 +38,7 @@
       <div class="form-group row">
         <label for="image" class="col-sm-2 col-form-label">餐廳照片網址</label>
         <div class="col-sm-10">
-          <input type="text" name="image" class="form-control" id="image"
-            placeholder="https://assets-lighthouse.s3.amazonaws.com/uploads/image/file/5630/04.jpg">
+          <input type="text" name="image" class="form-control" id="image" value="{{{restaurant.image}}}">
         </div>
       </div>
 
@@ -48,8 +46,7 @@
       <div class="form-group row">
         <label for="location" class="col-sm-2 col-form-label">餐廳地點</label>
         <div class="col-sm-10">
-          <input type="text" name="location" class="form-control" id="location"
-            placeholder="110 台北市信義區忠孝東路五段 139 號 2 樓">
+          <input type="text" name="location" class="form-control" id="location" value="{{{restaurant.location}}}">
         </div>
       </div>
 
@@ -57,7 +54,7 @@
       <div class="form-group row">
         <label for="phone" class="col-sm-2 col-form-label">餐廳電話</label>
         <div class="col-sm-10">
-          <input type="text" name="phone" class="form-control" id="phone" placeholder=" 02 2756 7788">
+          <input type="text" name="phone" class="form-control" id="phone" value="{{{restaurant.phone}}}">
         </div>
       </div>
 
@@ -65,8 +62,7 @@
       <div class="form-group row">
         <label for="google_map" class="col-sm-2 col-form-label">Google_Map</label>
         <div class="col-sm-10">
-          <input type="text" name="google_map" class="form-control" id="google_map"
-            placeholder="https://goo.gl/maps/V9mKwVJ4s5v">
+          <input type="text" name="google_map" class="form-control" id="google_map" value="{{{restaurant.google_map}}}">
         </div>
       </div>
 
@@ -75,7 +71,7 @@
         <label for="rating" class="col-sm-2 col-form-label">餐廳評分</label>
         <div class="col-sm-6">
           <input type="number" name="rating" class="form-control" id="rating" min="0" max="5" step="0.1"
-            placeholder="4.5">
+            value="{{{restaurant.rating}}}">
         </div>
       </div>
 
@@ -83,13 +79,14 @@
       <div class="form-group row">
         <label for="description" class="col-sm-2 col-form-label">餐廳簡介</label>
         <div class="col-sm-10">
-          <textarea name="description" id="description" cols="50" rows="3"></textarea>
+          <textarea name="description" id="description" cols="50" rows="3"
+            value="{{{restaurant.description}}}"></textarea>
         </div>
       </div>
 
       <div class="form-group row">
         <div class="col-sm-10">
-          <button type="submit" class="btn btn-primary">提交</button>
+          <button type="submit" class="btn btn-primary">更新</button>
         </div>
       </div>
 

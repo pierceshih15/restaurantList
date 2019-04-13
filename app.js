@@ -104,12 +104,38 @@ app.get('/restaurants/:id', (req, res) => {
 
 // 5. 修改一筆 restaurant 頁面
 app.get('/restaurants/:id/edit', (req, res) => {
-  res.send('編輯一間餐廳頁面');
+  Restaurant.findById(req.params.id, (err, restaurant) => {
+    if (err) return console.error(err);
+    return res.render('edit', {
+      restaurant: restaurant,
+    });
+  });
 });
 
 // 6. 修改一筆 restaurant 動作
 app.post('/restaurants/:id', (req, res) => {
-  res.send('編輯一間餐廳');
+  // Step 1：從資料庫取出資料
+  Restaurant.findById(req.params.id, (err, restaurant) => {
+    if (err) return console.error(err);
+
+    // Step 2：更新表單資料
+    restaurant.name = req.body.name;
+    restaurant.name_en = req.body.name_en;
+    restaurant.id = req.body.id;
+    restaurant.category = req.body.category;
+    restaurant.image = req.body.image;
+    restaurant.location = req.body.location;
+    restaurant.phone = req.body.phone;
+    restaurant.google_map = req.body.google_map;
+    restaurant.rating = req.body.rating;
+    restaurant.description = req.body.description;
+
+    // Step 3：將更新後資料，存入資料庫，並轉向餐廳詳細頁面
+    restaurant.save(err => {
+      if (err) return console.error(err);
+      return res.redirect(`/restaurants/${req.params.id}`);
+    });
+  });
 });
 
 // 7. 刪除一筆 restaurant 動作
