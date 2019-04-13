@@ -2,7 +2,7 @@ const express = require('express');
 const app = express();
 const port = 3000;
 const exphbs = require('express-handlebars');
-// const restaurantsList = require('./restaurants.json');
+const bodyParser = require('body-parser');
 
 const mongoose = require('mongoose');
 
@@ -29,6 +29,9 @@ app.set('view engine', 'handlebars');
 
 //Setting static file
 app.use(express.static('public'));
+app.use(bodyParser.urlencoded({
+  extended: true
+}));
 
 // Setting homePage route
 app.get('/', (req, res) => {
@@ -66,12 +69,27 @@ app.get('/restaurants', (req, res) => {
 
 // 2. 新增一筆 restaurant 頁面
 app.get('/restaurants/new', (req, res) => {
-  res.send('新增一間餐廳的頁面');
+  res.render('new');
 });
 
 // 3. 新增一筆 restaurant 動作
 app.post('/restaurants', (req, res) => {
-  res.send('新增一間餐廳');
+  const restaurant = Restaurant({
+    name: req.body.name,
+    name_en: req.body.name_en,
+    id: req.body.id,
+    category: req.body.category,
+    image: req.body.image,
+    location: req.body.location,
+    phone: req.body.phone,
+    google_map: req.body.google_map,
+    rating: req.body.rating,
+    description: req.body.description,
+  });
+  restaurant.save(err => {
+    if (err) return console.error(err);
+    return res.redirect('/');
+  });
 });
 
 // 4. 顯示一筆 restaurant 詳細資料的頁面
