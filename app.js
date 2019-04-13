@@ -56,15 +56,6 @@ app.get('/search', (req, res) => {
       restaurants: filterRestaurants,
     })
   })
-
-});
-
-app.get('/restaurants/:restaurant_id', (req, res) => {
-  const restaurant = restaurantsList.results.filter(item => item.id == req.params.restaurant_id);
-
-  res.render('show', {
-    restaurant: restaurant[0],
-  })
 });
 
 // 建立頁面路由 
@@ -85,7 +76,12 @@ app.post('/restaurants', (req, res) => {
 
 // 4. 顯示一筆 restaurant 詳細資料的頁面
 app.get('/restaurants/:id', (req, res) => {
-  res.send('顯示一間 餐廳 詳細資料的頁面');
+  Restaurant.findById(req.params.id, (err, restaurant) => {
+    if (err) return console.error(err);
+    return res.render('show', {
+      restaurant: restaurant,
+    });
+  });
 });
 
 // 5. 修改一筆 restaurant 頁面

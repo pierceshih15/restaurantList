@@ -23,7 +23,8 @@
       <div class="card-columns">
         {{#each restaurants}}
 
-        <a href="/restaurants/{{this.id}}" class="text-secondary">
+        <!-- restaurants 資料庫的編號屬性為 _id -->
+        <a href="/restaurants/{{this._id}}" class="text-secondary">
           <div class="card mb-3">
             <img class="card-img-top" src="{{this.image}}" alt="{{this.name}}">
             <div class="card-body p-3">
@@ -42,9 +43,10 @@
             <div class="card-footer py-3">
               <div class="row justify-content-around">
                 <a class="btn btn-sm btn-info col-3" href="/">Edit</a>
-                <a class="btn btn-sm btn-info col-3" href="/">Detail</a>
+                <!-- restaurants 資料庫的編號屬性為 _id -->
+                <a class="btn btn-sm btn-info col-3" href="/restaurants/{{this._id}}">Detail</a>
                 <form action="" class="col-4">
-                  <a class="btn btn-sm btn-danger" href="/">Delete</a>
+                  <button type="submit" class="btn btn-sm btn-danger" href="/">Delete</button>
                 </form>
               </div>
             </div>
