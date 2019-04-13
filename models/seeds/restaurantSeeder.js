@@ -31,5 +31,5 @@ db.once('open', () => {
     });
   }
 
-  console.log('done');
+  console.log('Restaurant date already created!');
 });
