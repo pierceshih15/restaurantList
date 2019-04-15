@@ -28,7 +28,7 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">關閉</button>
-        <form action="/restaurants/{{restaurant._id}}/delete" method="POST">
+        <form action="/restaurants/{{restaurant._id}}/delete?_method=DELETE" method="POST">
           <button type="submit" class="btn btn-danger">刪除</button>
         </form>
       </div>
