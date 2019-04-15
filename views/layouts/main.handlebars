@@ -25,13 +25,23 @@
     <!-- navigation -->
     <nav class="navbar navbar-light bg-light">
       <div class="container">
+
         <a class="navbar-brand" href="/">
           <img src="https://i.postimg.cc/JG2gFgJg/logo.png" width="30" height="30" class="d-inline-block align-top"
             alt="皮皮美食網">
           皮皮美食網
         </a>
 
-        <a class="btn btn-primary" href="/restaurants/new">新增餐廳</a>
+        <div class="container-right">
+          <form action="/search" class="form-inline d-inline-block">
+            <input type="text" name="keyword" class="form-control" placeholder="輸入餐廳、分類" value="{{keyword}}"
+              aria-label="Restaurant Name..." aria-describedby="search-button">
+            <button class="btn btn-major" type="submit" id="search-button"><i class="fas fa-search"></i></button>
+          </form>
+          <div class="d-inline-block">
+            <a class="btn btn-primary d-inline-block ml-2" href="/restaurants/new">新增餐廳</a>
+          </div>
+        </div>
       </div>
     </nav>
 

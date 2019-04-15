@@ -1,8 +1,8 @@
 # 皮皮美食網
 
-一個使用 Node.js + Express 打造的餐廳美食網站，使用者可依照餐廳名稱與類別進行搜尋
+一個使用 Node.js + Express 打造的餐廳美食網站，使用者可依照餐廳名稱與類別進行搜尋，也依照不同的條件排序資料，此外，使用者也可以自由新增、修改、刪除餐廳資料，實踐 CRUD 的產品功能。
 
-## ScreenShot - 專案畫面
+## 專案畫面
 ![image](https://github.com/pierceshih15/restaurantList/blob/master/public/img/homePage.jpg)
 
 ![image](https://github.com/pierceshih15/restaurantList/blob/master/public/img/restaurantInfo.jpg)
@@ -19,6 +19,11 @@
 6. 使用者可以瀏覽全部所有餐廳
 7. 使用者可以修改一家餐廳的資訊
 8. 使用者可以刪除一家餐廳
+
+## Environment - 環境安裝建置
+
+1. [MongoDB v4.0 以上](https://www.mongodb.com/download-center/community)
+2. [Node.js](https://nodejs.org/en/)
 
 ## Installing - 專案安裝流程 
 

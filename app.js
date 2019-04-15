@@ -41,6 +41,8 @@ app.use('/', require('./routes/home'));
 app.use('/restaurants', require('./routes/restaurants'));
 // search 路由
 app.use('/search', require('./routes/search'));
+// sort 路由
+app.use('/sort', require('./routes/sort'));
 
 app.listen(port, () => {
   console.log(`The express is listening on localhost:${port}.`);
