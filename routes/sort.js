@@ -12,7 +12,7 @@ router.get('/rating', (req, res) => {
     .exec((err, restaurants) => {
       if (err) return console.error(err);
       return res.render('index', {
-        restaurants: restaurants
+        restaurants
       })
     })
 });
@@ -26,7 +26,7 @@ router.get('/category', (req, res) => {
     .exec((err, restaurants) => {
       if (err) return console.error(err);
       return res.render('index', {
-        restaurants: restaurants
+        restaurants
       })
     })
 });
@@ -40,7 +40,7 @@ router.get('/asc', (req, res) => {
     .exec((err, restaurants) => {
       if (err) return console.error(err);
       return res.render('index', {
-        restaurants: restaurants
+        restaurants
       })
     })
 });
@@ -54,7 +54,7 @@ router.get('/desc', (req, res) => {
     .exec((err, restaurants) => {
       if (err) return console.error(err);
       return res.render('index', {
-        restaurants: restaurants
+        restaurants
       })
     })
 });
