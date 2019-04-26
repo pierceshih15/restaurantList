@@ -11,6 +11,7 @@ const RestaurantsRouter = require('./routes/restaurants');
 const SearchRouter = require('./routes/search');
 const SortRouter = require('./routes/sort');
 const UserRouter = require('./routes/users');
+const AuthRouter = require('./routes/auths');
 
 // Mongoose 
 const mongoose = require('mongoose');
@@ -18,6 +19,11 @@ const mongoose = require('mongoose');
 // 載入 express-session 與 passport
 const session = require('express-session');
 const passport = require('passport');
+
+// 判別開發環境
+if (process.env.NODE_ENV !== 'production') {
+  require('dotenv').config();
+}
 
 mongoose.connect('mongodb://localhost/restaurant', {
   useNewUrlParser: true,
@@ -76,6 +82,8 @@ app.use('/search', SearchRouter);
 app.use('/sort', SortRouter);
 // user 路由
 app.use('/users', UserRouter);
+// auth 路由
+app.use('/auth', AuthRouter);
 
 app.listen(port, () => {
   console.log(`The express is listening on localhost:${port}.`);
