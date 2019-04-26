@@ -32,46 +32,69 @@ router.post('/register', (req, res) => {
     password,
     password2
   } = req.body;
-  // Step 2：檢查使用者的 email 是否已註冊
-  User.findOne({
-    email: email
-  }).then(user => {
-    // Step 2-1：若已註冊過，則跳轉至註冊頁面，亦將表單資料回傳
-    if (user) {
-      res.render('register', {
-        name,
-        email,
-        password,
-        password2
-      })
-    } else {
-      // Step 2-2：若未註冊過，則新增使用者資料
-      // Step 2-2-1：引用 User Model，並將表單資料賦予 newUser 物件
-      const newUser = new User({
-        name,
-        email,
-        password,
-      });
 
-      bcrypt.genSalt(10, (err, salt) => {
-        bcrypt.hash(newUser.password, salt, (err, hash) => {
-          if (err) throw error;
-          newUser.password = hash;
-          // Step 2-2-2：透過 save 語法，將 newUser 物件存入資料庫
-          newUser.save().then(user => {
-            res.redirect('/');
-          }).catch(err => {
-            console.log(err);
+  // 加入錯誤訊息提示
+  let errors = []
+  if (!name || !email || !password || !password2) {
+    errors.push({
+      message: '所有欄位都是必填，請再次確認'
+    })
+  }
+  if (password !== password2) {
+    errors.push({
+      message: '密碼兩次輸入不一致，請重新輸入'
+    })
+  }
+  if (errors.length > 0) {
+    res.render('register', {
+      errors,
+      name,
+      email,
+      password,
+      password2,
+    })
+  } else {
+    // Step 2：檢查使用者的 email 是否已註冊
+    User.findOne({
+      email: email
+    }).then(user => {
+      // Step 2-1：若已註冊過，則跳轉至註冊頁面，亦將表單資料回傳
+      if (user) {
+        res.render('register', {
+          name,
+          email,
+          password,
+          password2,
+        });
+      } else {
+        // Step 2-2：若未註冊過，則新增使用者資料
+        // Step 2-2-1：引用 User Model，並將表單資料賦予 newUser 物件
+        const newUser = new User({
+          name,
+          email,
+          password,
+        });
+        bcrypt.genSalt(10, (err, salt) => {
+          bcrypt.hash(newUser.password, salt, (err, hash) => {
+            if (err) throw err;
+            newUser.password = hash;
+            // Step 2-2-2：透過 save 語法，將 newUser 物件存入資料庫
+            newUser.save().then(user => {
+              res.redirect('/');
+            }).catch(err => {
+              console.log(err);
+            })
           })
         })
-      })
-    }
-  })
+      }
+    })
+  }
 });
 
 // 登出動作
 router.get('/logout', (req, res) => {
   req.logout();
+  req.flash('success_msg', '你已經成功登出系統');
   res.redirect('/users/login');
 });
 

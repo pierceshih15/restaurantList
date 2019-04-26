@@ -20,6 +20,8 @@ const mongoose = require('mongoose');
 const session = require('express-session');
 const passport = require('passport');
 
+const flash = require('connect-flash');
+
 // 判別開發環境
 if (process.env.NODE_ENV !== 'production') {
   require('dotenv').config();
@@ -64,13 +66,20 @@ app.use(session({
 app.use(passport.initialize());
 app.use(passport.session());
 
+// flash
+app.use(flash());
+
 // Passport Middleware
 require('./config/passport')(passport);
 app.use((req, res, next) => {
   res.locals.user = req.user;
   res.locals.isAuthenticated = req.isAuthenticated();
+  res.locals.success_msg = req.flash('success_msg');
+  res.locals.warning_msg = req.flash('warning_msg');
   next();
 });
+
+
 
 // 首頁路由
 app.use('/', HomeRouter);
