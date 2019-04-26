@@ -20,7 +20,8 @@ const session = require('express-session');
 const passport = require('passport');
 
 mongoose.connect('mongodb://localhost/restaurant', {
-  useNewUrlParser: true
+  useNewUrlParser: true,
+  useCreateIndex: true,
 });
 
 const db = mongoose.connection;
@@ -50,6 +51,8 @@ app.use(methodOverride('_method'));
 // Session and passport
 app.use(session({
   secret: 'ioqeodond',
+  resave: false,
+  saveUninitialized: false,
 }));
 
 app.use(passport.initialize());
