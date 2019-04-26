@@ -7,7 +7,9 @@ const {
 
 // 1. 列出全部 restaurant 頁面
 router.get('/', authenticated, (req, res) => {
-  Restaurant.find({})
+  Restaurant.find({
+      userId: req.user._id,
+    })
     .sort({
       name: 'asc'
     })

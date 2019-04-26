@@ -7,13 +7,16 @@ const {
 
 // 2. 新增一筆 restaurant 頁面
 router.get('/new', authenticated, (req, res) => {
-  res.render('new');
+  return res.render('new');
 });
 
 // 3. 新增一筆 restaurant 動作
 router.post('/', authenticated, (req, res) => {
   // 將使用者送出的 req.body 作為參數傳入 Restaurant 物件使用，即可賦予資料
-  const restaurant = Restaurant(req.body);
+  const restaurant = Restaurant({
+    name: req.body.name,
+    userId: req.user._id,
+  });
 
   restaurant.save(err => {
     if (err) return console.error(err);
@@ -23,7 +26,10 @@ router.post('/', authenticated, (req, res) => {
 
 // 4. 顯示一筆 restaurant 詳細資料的頁面
 router.get('/:id', authenticated, (req, res) => {
-  Restaurant.findById(req.params.id, (err, restaurant) => {
+  Restaurant.findOne({
+    userId: req.user._id,
+    _id: req.params.id,
+  }, (err, restaurant) => {
     if (err) return console.error(err);
     return res.render('show', {
       restaurant
@@ -33,7 +39,10 @@ router.get('/:id', authenticated, (req, res) => {
 
 // 5. 修改一筆 restaurant 頁面
 router.get('/:id/edit', authenticated, (req, res) => {
-  Restaurant.findById(req.params.id, (err, restaurant) => {
+  Restaurant.findOne({
+    userId: req.user._id,
+    _id: req.params.id,
+  }, (err, restaurant) => {
     if (err) return console.error(err);
     return res.render('edit', {
       restaurant
@@ -44,7 +53,10 @@ router.get('/:id/edit', authenticated, (req, res) => {
 // 6. 修改一筆 restaurant 動作
 router.put('/:id', authenticated, (req, res) => {
   // Step 1：從資料庫取出資料
-  Restaurant.findById(req.params.id, (err, restaurant) => {
+  Restaurant.findOne({
+    userId: req.user._id,
+    _id: req.params.id,
+  }, (err, restaurant) => {
     if (err) return console.error(err);
 
     // Step 2：更新表單資料，Object.assign(target array, ...sources array)
@@ -61,7 +73,10 @@ router.put('/:id', authenticated, (req, res) => {
 // 7. 刪除一筆 restaurant 動作
 router.delete('/:id/delete', authenticated, (req, res) => {
   // Step 1：從資料庫取出資料
-  Restaurant.findById(req.params.id, (err, restaurant) => {
+  Restaurant.findOne({
+    userId: req.user._id,
+    _id: req.params.id,
+  }, (err, restaurant) => {
     if (err) return console.error(err);
 
     // Step 2：將資料庫資料移除，並轉向首頁
