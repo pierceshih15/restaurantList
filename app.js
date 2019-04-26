@@ -10,6 +10,7 @@ const HomeRouter = require('./routes/home');
 const RestaurantsRouter = require('./routes/restaurants');
 const SearchRouter = require('./routes/search');
 const SortRouter = require('./routes/sort');
+const UserRouter = require('./routes/users');
 
 // Mongoose 
 const mongoose = require('mongoose');
@@ -50,6 +51,8 @@ app.use('/restaurants', RestaurantsRouter);
 app.use('/search', SearchRouter);
 // sort 路由
 app.use('/sort', SortRouter);
+// user 路由
+app.use('/users', UserRouter);
 
 app.listen(port, () => {
   console.log(`The express is listening on localhost:${port}.`);
