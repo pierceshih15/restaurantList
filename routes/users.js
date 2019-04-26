@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const User = require('../models/user');
 const passport = require('passport');
+const bcrypt = require('bcryptjs');
 
 // 登入頁面
 router.get('/login', (req, res) => {
@@ -51,11 +52,18 @@ router.post('/register', (req, res) => {
         email,
         password,
       });
-      // Step 2-2-2：透過 save 語法，將 newUser 物件存入資料庫
-      newUser.save().then(user => {
-        res.redirect('/');
-      }).catch(err => {
-        console.log(err);
+
+      bcrypt.getSalt(10, (err, salt) => {
+        bcrypt.hash(newUser.password, salt, (err, hash) => {
+          if (err) throw error;
+          newUser.password = hash;
+          // Step 2-2-2：透過 save 語法，將 newUser 物件存入資料庫
+          newUser.save().then(user => {
+            res.redirect('/');
+          }).catch(err => {
+            console.log(err);
+          })
+        })
       })
     }
   })
