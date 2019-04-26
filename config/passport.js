@@ -1,6 +1,7 @@
 const LocalStrategy = require('passport-local').Strategy;
 const mongoose = require('mongoose');
 const User = require('../models/user');
+const bcrypt = require('bcryptjs')
 
 module.exports = passport => {
   passport.use(
@@ -15,12 +16,16 @@ module.exports = passport => {
             message: 'That email is not registered.'
           });
         }
-        if (user.password != password) {
-          return done(null, false, {
-            message: 'Incorrect password.'
-          });
-        }
-        return done(null, user);
+        bcrypt.compare(password, user.password, (err, isMatch) => {
+          if (err) throw error;
+          if (isMatch) {
+            return done(null, user);
+          } else {
+            return done(null, false, {
+              message: 'Incorrect password.'
+            });
+          }
+        })
       })
     })
   )
