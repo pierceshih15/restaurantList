@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const User = require('../models/user');
+const passport = require('passport');
 
 // 登入頁面
 router.get('/login', (req, res) => {
@@ -8,8 +9,12 @@ router.get('/login', (req, res) => {
 });
 
 // 登入動作（檢查）
-router.post('/login', (req, res) => {
-  res.send('login');
+// next 等於 passport middleware 的 done 
+router.post('/login', (req, res, next) => {
+  passport.authenticate('local', {
+    successRedirect: '/',
+    failureRedirect: '/users/login',
+  })(req, res, next);
 });
 
 // 註冊頁面

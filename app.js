@@ -15,6 +15,10 @@ const UserRouter = require('./routes/users');
 // Mongoose 
 const mongoose = require('mongoose');
 
+// 載入 express-session 與 passport
+const session = require('express-session');
+const passport = require('passport');
+
 mongoose.connect('mongodb://localhost/restaurant', {
   useNewUrlParser: true
 });
@@ -42,6 +46,21 @@ app.use(bodyParser.urlencoded({
   extended: true
 }));
 app.use(methodOverride('_method'));
+
+// Session and passport
+app.use(session({
+  secret: 'ioqeodond',
+}));
+
+app.use(passport.initialize());
+app.use(passport.session());
+
+// Passport Middleware
+require('./config/passport')(passport);
+app.use((req, res, next) => {
+  res.locals.user = req.user;
+  next();
+});
 
 // 首頁路由
 app.use('/', HomeRouter);
