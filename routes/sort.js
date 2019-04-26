@@ -1,10 +1,12 @@
 const express = require('express');
 const router = express.Router();
 const Restaurant = require('../models/restaurant');
-
+const {
+  authenticated
+} = require('../config/auth');
 
 // 餐廳評分排序
-router.get('/rating', (req, res) => {
+router.get('/rating', authenticated, (req, res) => {
   Restaurant.find({})
     .sort({
       rating: 'desc'
@@ -18,7 +20,7 @@ router.get('/rating', (req, res) => {
 });
 
 // 餐廳類別排序
-router.get('/category', (req, res) => {
+router.get('/category', authenticated, (req, res) => {
   Restaurant.find({})
     .sort({
       category: 'asc'
@@ -32,7 +34,7 @@ router.get('/category', (req, res) => {
 });
 
 // A > Z 升冪排序
-router.get('/asc', (req, res) => {
+router.get('/asc', authenticated, (req, res) => {
   Restaurant.find({})
     .sort({
       name: 'asc'
@@ -46,7 +48,7 @@ router.get('/asc', (req, res) => {
 });
 
 // Z > A 降冪排序
-router.get('/desc', (req, res) => {
+router.get('/desc', authenticated, (req, res) => {
   Restaurant.find({})
     .sort({
       name: 'desc'

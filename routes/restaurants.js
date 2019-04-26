@@ -1,15 +1,17 @@
 const express = require('express');
 const router = express.Router();
 const Restaurant = require('../models/restaurant');
+const {
+  authenticated
+} = require('../config/auth');
 
 // 2. 新增一筆 restaurant 頁面
-router.get('/new', (req, res) => {
+router.get('/new', authenticated, (req, res) => {
   res.render('new');
 });
 
 // 3. 新增一筆 restaurant 動作
-router.post('/', (req, res) => {
-
+router.post('/', authenticated, (req, res) => {
   // 將使用者送出的 req.body 作為參數傳入 Restaurant 物件使用，即可賦予資料
   const restaurant = Restaurant(req.body);
 
@@ -20,7 +22,7 @@ router.post('/', (req, res) => {
 });
 
 // 4. 顯示一筆 restaurant 詳細資料的頁面
-router.get('/:id', (req, res) => {
+router.get('/:id', authenticated, (req, res) => {
   Restaurant.findById(req.params.id, (err, restaurant) => {
     if (err) return console.error(err);
     return res.render('show', {
@@ -30,7 +32,7 @@ router.get('/:id', (req, res) => {
 });
 
 // 5. 修改一筆 restaurant 頁面
-router.get('/:id/edit', (req, res) => {
+router.get('/:id/edit', authenticated, (req, res) => {
   Restaurant.findById(req.params.id, (err, restaurant) => {
     if (err) return console.error(err);
     return res.render('edit', {
@@ -40,7 +42,7 @@ router.get('/:id/edit', (req, res) => {
 });
 
 // 6. 修改一筆 restaurant 動作
-router.put('/:id', (req, res) => {
+router.put('/:id', authenticated, (req, res) => {
   // Step 1：從資料庫取出資料
   Restaurant.findById(req.params.id, (err, restaurant) => {
     if (err) return console.error(err);
@@ -57,7 +59,7 @@ router.put('/:id', (req, res) => {
 });
 
 // 7. 刪除一筆 restaurant 動作
-router.delete('/:id/delete', (req, res) => {
+router.delete('/:id/delete', authenticated, (req, res) => {
   // Step 1：從資料庫取出資料
   Restaurant.findById(req.params.id, (err, restaurant) => {
     if (err) return console.error(err);

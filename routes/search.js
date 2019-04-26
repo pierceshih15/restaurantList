@@ -1,9 +1,12 @@
 const express = require('express');
 const router = express.Router();
 const Restaurant = require('../models/restaurant');
+const {
+  authenticated
+} = require('../config/auth');
 
 // 搜尋 action
-router.get('/', (req, res) => {
+router.get('/', authenticated, (req, res) => {
   Restaurant.find((err, restaurants) => {
     if (err) return console.error(err);
 

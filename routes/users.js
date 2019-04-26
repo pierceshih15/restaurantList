@@ -63,7 +63,8 @@ router.post('/register', (req, res) => {
 
 // 登出動作
 router.get('/logout', (req, res) => {
-  res.send('logout');
+  req.logout();
+  res.redirect('/users/login');
 });
 
 module.exports = router;
