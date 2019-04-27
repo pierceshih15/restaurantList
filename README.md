@@ -1,19 +1,22 @@
 # 皮皮美食網
 
-一個使用 Node.js + Express 打造的餐廳美食網站，使用者可依照餐廳名稱與類別進行搜尋，也依照不同的條件排序資料，此外，使用者也可以自由新增、修改、刪除餐廳資料，實踐 CRUD 的產品功能。
+一個使用 Node.js + Express 打造的餐廳美食網站，提供使用者註冊個人帳號，管理自己的餐廳清單，如新增、修改、刪除餐廳資料等功能，同時，不僅可依照餐廳名稱與類別進行搜尋，也依照不同的條件排序餐廳資料。
 
 ## 專案畫面
+
 ![image](https://github.com/pierceshih15/restaurantList/blob/master/public/img/homePage.png)
 
 ![image](https://github.com/pierceshih15/restaurantList/blob/master/public/img/restaurantInfo.png)
 
 ![image](https://github.com/pierceshih15/restaurantList/blob/master/public/img/addNewRestaurant.png)
 
-## Features - 產品功能 
+![image](https://github.com/pierceshih15/restaurantList/blob/master/public/img/loginPage.png)
 
-1. 首頁顯示所有餐廳的資料，包含名稱、類別、評價
-2. 使用者點擊任一餐廳後，則會顯示更多餐廳資訊，如地址、電話與簡介
-3. 使用者可依照中文名稱、英文名稱、類別進行餐廳搜尋
+## Features - 產品功能
+
+1. 使用者可以藉由第三方快速註冊登入(Facebook, Google)
+2. 使用者可以點擊任一餐廳，查看更多餐廳資訊，如地址、電話與簡介
+3. 使用者可以依照中文名稱、英文名稱、類別進行餐廳搜尋
 4. 使用者可以新增一家餐廳
 5. 使用者可以瀏覽一家餐廳的詳細資訊
 6. 使用者可以瀏覽全部所有餐廳
@@ -25,22 +28,28 @@
 1. [MongoDB v4.0 以上](https://www.mongodb.com/download-center/community)
 2. [Node.js](https://nodejs.org/en/)
 
-## Installing - 專案安裝流程 
+## Installing - 專案安裝流程
 
 1. 打開你的 terminal，Clone 此專案至本機電腦
+
 ```
 git clone https://github.com/pierceshih15/restaurantList.git
 ```
+
 2. 開啟終端機(Terminal)，進入存放此專案的資料夾
+
 ```
 cd restaurantList
 ```
-3. 安裝 npm 套件 
+
+3. 安裝 npm 套件
+
 ```
 在 Terminal 輸入 npm install 指令
 ```
 
 4. 安裝 nodemon 套件
+
 ```
 在 Terminal 輸入 nodemon app.js 指令
 ```
@@ -48,12 +57,13 @@ cd restaurantList
 5. 匯入種子檔案
 
 ```
-在 Terminal 找到 restaurantSeeder.js 檔案
+在 Terminal 找到 Seeder.js 檔案
 
-執行 node .\models\seeds\restaurantSeeder.js 匯入餐廳資料
+執行 node .\models\seeds\Seeder.js 匯入使用者與餐廳資料
 ```
 
 當 terminal 出現以下字樣，即表示種子資料已新增至資料庫，按下 ctrl + c 結束執行
+
 ```
 Mongodb is connected!
 
@@ -61,20 +71,21 @@ Restaurant date get done!
 ```
 
 6. 啟動伺服器，執行 app.js 檔案
+
 ```
 nodemon app.js
 ```
 
 7. 當 terminal 出現以下字樣，表示伺服器與資料庫已啟動並成功連結
+
 ```
 The Express server is running on http://localhost:3000
 
 Mongodb is connected!
 ```
+
 現在，你可開啟任一瀏覽器瀏覽器輸入 [http://localhost:3000](http://localhost:3000) 開始尋找美食餐廳囉！
 
 ## Contributor - 專案開發人員
 
 > [Pierce Shih](https://github.com/pierceshih15)
-
-

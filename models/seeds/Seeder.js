@@ -46,5 +46,5 @@ db.once('open', () => {
     }
   }
 
-  console.log('資料已成功載入');
+  console.log('User and Restaurant date get done!');
 })
