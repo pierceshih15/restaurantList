@@ -67,7 +67,7 @@ cd restaurantList
 ```
 Mongodb is connected!
 
-Restaurant date get done!
+User and Restaurant data get done!
 ```
 
 6. 啟動伺服器，執行 app.js 檔案

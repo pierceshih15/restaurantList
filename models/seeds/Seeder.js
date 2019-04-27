@@ -46,5 +46,5 @@ db.once('open', () => {
     }
   }
 
-  console.log('User and Restaurant date get done!');
+  console.log('User and Restaurant data get done!');
 })
