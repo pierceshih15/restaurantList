@@ -38,6 +38,10 @@ const restaurantSchema = new Schema({
     ref: 'User',
     index: true,
     required: true,
+  },
+  data: {
+    type: Date,
+    default: Date.now,
   }
 });
 
