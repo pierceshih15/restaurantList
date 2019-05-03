@@ -26,7 +26,7 @@ if (process.env.NODE_ENV !== 'production') {
   require('dotenv').config();
 }
 
-mongoose.connect('mongodb://localhost/restaurant', {
+mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/restaurant', {
   useNewUrlParser: true,
   useCreateIndex: true,
 });
@@ -86,6 +86,6 @@ app.use('/users', UserRouter);
 // auth 路由
 app.use('/auth', AuthRouter);
 
-app.listen(port, () => {
+app.listen(process.env.PORT || port, () => {
   console.log(`The express is listening on localhost:${port}.`);
 })

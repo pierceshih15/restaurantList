@@ -5,7 +5,7 @@ const restaurantsList = require('../../restaurants.json').results;
 const User = require('../user');
 const usersList = require('../../users.json').results;
 
-mongoose.connect('mongodb://localhost/restaurant', {
+mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/restaurant', {
   useNewUrlParser: true,
   useCreateIndex: true
 });
