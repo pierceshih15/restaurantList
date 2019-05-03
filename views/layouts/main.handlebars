@@ -37,13 +37,7 @@
           {{#if isAuthenticated}}
 
           <div class="d-inline-block">
-            <form action="/search" class="form-inline d-inline-block">
-              <div class="d-inline-block">
-                <input type="text" name="keyword" class="form-control" placeholder="輸入餐廳、分類" value="{{keyword}}"
-                  aria-label="Restaurant Name..." aria-describedby="search-button">
-                <button class="btn btn-major" type="submit" id="search-button"><i class="fas fa-search"></i></button>
-              </div>
-            </form>
+
             <a class="btn btn-primary d-inline-block ml-2" href="/restaurants/new">新增餐廳<i
                 class="fas fa-plus ml-2"></i></a>
 

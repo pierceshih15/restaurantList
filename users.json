@@ -1,18 +1,18 @@
 {
   "results": [{
-      "name": "張三",
-      "email": "changthree@gmail.com",
-      "password": "333333"
+      "name": "一寶",
+      "email": "admin1@gmail.com",
+      "password": "1234"
     },
     {
-      "name": "李四",
-      "email": "leefour@gmail.com",
-      "password": "444444"
+      "name": "老二",
+      "email": "admin2@gmail.com",
+      "password": "1234"
     },
     {
-      "name": "陳五",
-      "email": "chenfive@gmail.com",
-      "password": "555555"
+      "name": "阿三",
+      "email": "admin3@gmail.com",
+      "password": "1234"
     }
   ]
 }

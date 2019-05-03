@@ -13,25 +13,27 @@
 
       <!-- 餐廳英文名稱  -->
       <div class="form-group row">
-        <label for="name_en" class="col-sm-2 col-form-label">餐廳英文名稱</label>
+        <label for="name_en" class="col-sm-2 col-form-label">餐廳英文名稱 <small><i
+              class="fas fa-star-of-life text-danger"></i></small></label>
         <div class="col-sm-10">
-          <input type="name" name="name_en" class="form-control" id="name_en" placeholder="英文名稱">
+          <input type="name" name="name_en" class="form-control" id="name_en" placeholder="英文名稱" required>
         </div>
       </div>
 
       <!-- 餐廳編號  -->
       <div class="form-group row">
         <label for="id" class="col-sm-2 col-form-label">餐廳編號</label>
-        <div class="col-sm-6">
+        <div class="col-sm-5">
           <input type="number" name="id" class="form-control" id="id" min="1" step="1" placeholder="餐廳編號">
         </div>
       </div>
 
       <!-- 餐廳分類  -->
       <div class="form-group row">
-        <label for="category" class="col-sm-2 col-form-label">餐廳類別</label>
+        <label for="category" class="col-sm-2 col-form-label">餐廳類別 <small><i
+              class="fas fa-star-of-life text-danger"></i></small></label>
         <div class="col-sm-10">
-          <input type="text" name="category" class="form-control" id="category" placeholder="日本料理、港式料理">
+          <input type="text" name="category" class="form-control" id="category" placeholder="日本料理、港式料理" required>
         </div>
       </div>
 
@@ -72,10 +74,11 @@
 
       <!-- 餐廳評分  -->
       <div class="form-group row">
-        <label for="rating" class="col-sm-2 col-form-label">餐廳評分</label>
-        <div class="col-sm-6">
+        <label for="rating" class="col-sm-2 col-form-label">餐廳評分 <small><i
+              class="fas fa-star-of-life text-danger"></i></small></label>
+        <div class="col-sm-5">
           <input type="number" name="rating" class="form-control" id="rating" min="0" max="5" step="0.1"
-            placeholder="4.5">
+            placeholder="4.5" required>
         </div>
       </div>
 
@@ -83,7 +86,7 @@
       <div class="form-group row">
         <label for="description" class="col-sm-2 col-form-label">餐廳簡介</label>
         <div class="col-sm-10">
-          <textarea name="description" id="description" cols="50" rows="3"></textarea>
+          <textarea name="description" id="description" cols="48" rows="3"></textarea>
         </div>
       </div>
 

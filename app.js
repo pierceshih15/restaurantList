@@ -4,12 +4,11 @@ const port = 3000;
 const exphbs = require('express-handlebars');
 const bodyParser = require('body-parser');
 const methodOverride = require('method-override');
+const Restaurant = require('./models/restaurant')
 
 // Router Variables
 const HomeRouter = require('./routes/home');
 const RestaurantsRouter = require('./routes/restaurants');
-const SearchRouter = require('./routes/search');
-const SortRouter = require('./routes/sort');
 const UserRouter = require('./routes/users');
 const AuthRouter = require('./routes/auths');
 
@@ -42,7 +41,6 @@ db.once('open', () => {
   console.log('mongodb connected!');
 });
 
-const Restaurant = require('./models/restaurant')
 
 app.engine('handlebars', exphbs({
   defaultLayout: 'main'
@@ -83,10 +81,6 @@ app.use((req, res, next) => {
 app.use('/', HomeRouter);
 // restaurants 路由
 app.use('/restaurants', RestaurantsRouter);
-// search 路由
-app.use('/search', SearchRouter);
-// sort 路由
-app.use('/sort', SortRouter);
 // user 路由
 app.use('/users', UserRouter);
 // auth 路由

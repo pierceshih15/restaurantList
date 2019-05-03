@@ -1,17 +1,35 @@
-<div class="container mt-4">
-  <h1 class="text-center">餐廳資訊</h1>
-  <div class="mx-auto d-flex justify-content-end">
-    <div class="dropdown">
-      <button class="btn btn-outline-success dropdown-toggle font-italic" type="button" id="dropdownMenuButton"
-        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">排序方式</button>
-      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-        <a class="dropdown-item" href="/sort/rating">餐廳評分</a>
-        <a class="dropdown-item" href="/sort/category">餐廳類別</a>
-        <a class="dropdown-item" href="/sort/asc">A > Z (升冪)</a>
-        <a class="dropdown-item" href="/sort/desc">Z > A (降冪)</a>
+<div class="container search-bar mt-4 mx-auto">
+  <form action="/">
+    <div class="search-bar-outer">
+      <div class="search-bar-inner">
+        <h4 class="mb-2">尋找餐廳：</h4>
+        <div class="input-group">
+          <input type="text" name="searchKeyword" class="form-control" placeholder="輸入餐廳、分類" value="{{searchKeyword}}"
+            aria-label="Restaurant Name..." aria-describedby="search-button">
+          <input type="hidden" name="sortField" value="{{sortField}}" />
+          <input type="hidden" name="sortOrder" value="{{sortOrder}}" />
+          <div class="input-group-append">
+            <button class="btn btn-major" type="submit" id="search-button"><i class="fas fa-search"></i></button>
+          </div>
+        </div>
       </div>
     </div>
-  </div>
+
+    <div class="mx-auto d-flex justify-content-end">
+      <div class="dropdown">
+        <button class="btn btn-outline-primary dropdown-toggle font-italic" type="button" id="dropdownMenuButton"
+          data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">排序方式</button>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+          <a class="dropdown-item" href="/?searchKeyword={{searchKeyword}}&sortField=rating&sortOrder=desc">餐廳評分</a>
+          <a class="dropdown-item" href="/?searchKeyword={{searchKeyword}}&sortField=category&sortOrder=asc">餐廳類別</a>
+          <a class="dropdown-item" href="/?searchKeyword={{searchKeyword}}&sortField=name&sortOrder=asc">A > Z
+            (升冪)</a>
+          <a class="dropdown-item" href="/?searchKeyword={{searchKeyword}}&sortField=name&sortOrder=desc">Z > A
+            (降冪)</a>
+        </div>
+      </div>
+    </div>
+  </form>
 </div>
 
 <!-- restaurant list -->
