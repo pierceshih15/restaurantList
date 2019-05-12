@@ -2,6 +2,15 @@
 
 一個使用 Node.js + Express 打造的餐廳美食網站，提供使用者註冊個人帳號，管理自己的餐廳清單，如新增、修改、刪除餐廳資料等功能，同時，不僅可依照餐廳名稱與類別進行搜尋，也依照不同的條件排序餐廳資料。
 
+[Demo Website](https://pipi-restaurant-list.herokuapp.com/users/login)
+
+歡迎使用測試帳號登入使用，帳密如下：
+
+```
+帳號：pierce@gmail.com
+密碼：1234
+```
+
 ## 專案畫面
 
 ![image](https://github.com/pierceshih15/restaurantList/blob/master/public/img/homePage.png)
@@ -84,7 +93,12 @@ The Express server is running on http://localhost:3000
 Mongodb is connected!
 ```
 
-現在，你可開啟任一瀏覽器瀏覽器輸入 [http://localhost:3000](http://localhost:3000) 開始尋找美食餐廳囉！
+現在，你可開啟任一瀏覽器瀏覽器輸入 [http://localhost:3000](http://localhost:3000) 開始使用皮皮美食網囉！歡迎使用官方測試帳號操作。
+
+```
+帳號：pierce@gmail.com
+密碼：1234
+```
 
 ## Contributor - 專案開發人員
 
